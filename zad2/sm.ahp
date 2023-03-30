@@ -1,0 +1,132 @@
+Version: 1.0
+#####################################
+# Alternatives Section
+Alternatives:
+  &alternatives
+  Samsung Galaxy S20:
+    wyswietlacz: 6.4
+    ram: 6
+    pamiec: 128
+    aparat: 12
+    cena: 2599
+    jakosc: 7
+    styl: 89
+  Samsung Galaxy M22:
+    wyswietlacz: 6.4
+    ram: 8
+    pamiec: 64
+    aparat: 48
+    cena: 2399
+    jakosc: 5
+    styl: 45
+  Samsung Galaxy A12:
+    wyswietlacz: 6.2
+    ram: 6
+    pamiec: 128
+    aparat: 32
+    cena: 2599
+    jakosc: 5
+    styl: 73
+  Samsung Galaxy ZFLIP:
+    wyswietlacz: 6.7
+    ram: 6
+    pamiec: 256
+    aparat: 48
+    cena: 1599
+    jakosc: 9
+    styl: 47
+  Samsung Galaxy M22GREY:
+    wyswietlacz: 6.4
+    ram: 6
+    pamiec: 256
+    aparat: 32
+    cena: 1699
+    jakosc: 7
+    styl: 32
+  Samsung Galaxy A12BLACK:
+    wyswietlacz: 6.5
+    ram: 8
+    pamiec: 256
+    aparat: 12
+    cena: 2799
+    jakosc: 4
+    styl: 69
+  Samsung Galaxy M221:
+    wyswietlacz: 6.5
+    ram: 4
+    pamiec: 128
+    aparat: 8
+    cena: 1499
+    jakosc: 8
+    styl: 44
+  Samsung Galaxy S20PINK:
+    wyswietlacz: 6.4
+    ram: 8
+    pamiec: 128
+    aparat: 32
+    cena: 2199
+    jakosc: 9
+    styl: 65
+  Samsung Galaxy M22PRO:
+    wyswietlacz: 6.5
+    ram: 8
+    pamiec: 256
+    aparat: 32
+    cena: 1699
+    jakosc: 8
+    styl: 88
+  Samsung Galaxy S20PRO:
+    wyswietlacz: 6.5
+    ram: 6
+    pamiec: 256
+    aparat: 64
+    cena: 3099
+    jakosc: 4
+    styl: 81
+
+#End of Alternatives Section
+#####################################
+#Goal Section
+
+Goal:
+  name: Kup Smartfon
+  preferences:
+    - [Wydajnosc, Jakosc, 7]
+    - [Wydajnosc, Styl, 8]
+    - [Wydajnosc, Cena, 1/7]
+    - [Jakosc, Styl, 6]
+    - [Jakosc, Cena, 1/8]
+    - [Styl, Cena, 1/3]
+  children:
+    Wydajnosc:
+      preferences:
+        - [Ram, Pamiec, 9]
+        - [Ram, Aparat, 7]
+        - [Pamiec, Aparat, 5]
+      children:
+        Ram:
+          preferenceFunction:
+            function(a1, a2) min(9, max(1/9, a1$ram/a2$ram))
+          children: *alternatives
+        Pamiec:
+          preferenceFunction:
+            function(a1, a2) min(9, max(1/9, a1$pamiec/a2$pamiec))
+          children: *alternatives
+        Aparat:
+          preferenceFunction:
+            function(a1, a2) min(9, max(1/9, a1$aparat/a2$aparat))
+          children: *alternatives
+    Jakosc:
+      preferenceFunction:
+        function(a1, a2) min(9, max(1/9, a1$jakosc/a2$jakosc))
+      children: *alternatives
+    Styl:
+      preferenceFunction:
+        function(a1, a2) min(9, max(1/9, a1$styl/a2$styl))
+      children: *alternatives
+    Cena:
+      preferenceFunction:
+        function(a1, a2) min(1/9, max(9, a1$cena/a2$cena))
+      children: *alternatives
+# End of Goal Section
+#####################################
