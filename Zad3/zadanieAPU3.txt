@@ -1,0 +1,31 @@
+#zad1
+install.packages ("neuralnet")
+library(neuralnet)
+normalize <- function(x) {return ((x - min(x)) / (max(x) - min(x))) }
+x <- as.data.frame(runif(100, min = 1, max = 100)) 
+result <- x^3 + 2*x
+trainingData <- cbind(result, x) 
+colnames(trainingData) <- c("Output", "Result")
+maxmindf<- as.data.frame(lapply(trainingData, normalize)) 
+net.price <- neuralnet(Result~Output, maxmindf, hidden = c(2,3,4,3), threshold = 0.01) 
+plot(net.price) 
+
+#zad2
+library(neuralnet)
+normalize <- function(x) {return ((x - min(x)) / (max(x) - min(x))) }
+setwd("C:/Users/asiat/Documents/R/Zad3")
+sm <- read.csv("smartfony.csv")
+price <- normalize(sm$cena)
+display <- normalize(sm$wyswietlacz)
+ram <- normalize(sm$pamiec_ram)
+drive <- normalize(sm$pamiec_wbudowana)
+sm <- sm[,-1]
+sm <- sm[,-4]
+sm <- sm[,-5]
+sm <- sm[,-5]
+sm <- sm[,-5]
+sm
+sm <-cbind(sm, price, display, ram, drive)
+net.price <-neuralnet(price~display+ram+drive, sm, hidden=c(6,5,4,3), threshold = 0.01)
+plot(net.price)
+
