@@ -1,0 +1,1682 @@
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R jest oprogramowaniem darmowym i dostarczany jest BEZ JAKIEJKOLWIEK GWARANCJI.
+Możesz go rozpowszechniać pod pewnymi warunkami.
+Wpisz 'license()' lub 'licence()' aby uzyskać szczegóły dystrybucji.
+
+R jest projektem kolaboracyjnym z wieloma uczestnikami.
+Wpisz 'contributors()' aby uzyskać więcej informacji oraz
+'citation()' aby dowiedzieć się jak cytować R lub pakiety R w publikacjach.
+
+Wpisz 'demo()' aby zobaczyć demo, 'help()' aby uzyskać pomoc on-line, lub
+'help.start()' aby uzyskać pomoc w przeglądarce HTML.
+Wpisz 'q()' aby wyjść z R.
+
+[Poprzednio zapisany obszar roboczy został przywrócony]
+
+> install.packages("C50")
+Instalowanie pakietu w ‘C:/Users/asiat/AppData/Local/R/win-library/4.2’
+(ponieważ ‘lib’ nie jest określony)
+--- Proszę wybrać serwer lustrzany CRAN do użycia w tej sesji ---
+instalowanie dodatkowych zależności ‘plyr’, ‘reshape2’, ‘libcoin’, ‘mvtnorm’, ‘Formula’, ‘inum’, ‘Cubist’, ‘partykit’
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/plyr_1.8.8.zip'
+Content type 'application/zip' length 1151153 bytes (1.1 MB)
+downloaded 1.1 MB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/reshape2_1.4.4.zip'
+Content type 'application/zip' length 446512 bytes (436 KB)
+downloaded 436 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/libcoin_1.0-9.zip'
+Content type 'application/zip' length 960000 bytes (937 KB)
+downloaded 937 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/mvtnorm_1.1-3.zip'
+Content type 'application/zip' length 233544 bytes (228 KB)
+downloaded 228 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/Formula_1.2-5.zip'
+Content type 'application/zip' length 160722 bytes (156 KB)
+downloaded 156 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/inum_1.0-5.zip'
+Content type 'application/zip' length 39355 bytes (38 KB)
+downloaded 38 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/Cubist_0.4.2.1.zip'
+Content type 'application/zip' length 889663 bytes (868 KB)
+downloaded 868 KB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/partykit_1.2-20.zip'
+Content type 'application/zip' length 2441696 bytes (2.3 MB)
+downloaded 2.3 MB
+
+próbowanie adresu URL 'https://mirrors.nic.cz/R/bin/windows/contrib/4.2/C50_0.1.8.zip'
+Content type 'application/zip' length 343511 bytes (335 KB)
+downloaded 335 KB
+
+pakiet ‘plyr’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘reshape2’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘libcoin’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘mvtnorm’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘Formula’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘inum’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘Cubist’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘partykit’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+pakiet ‘C50’ został pomyślnie rozpakowany oraz sumy MD5 zostały sprawdzone
+
+Pobrane pakiety binarne są w
+        C:\Users\asiat\AppData\Local\Temp\RtmpIRGAgU\downloaded_packages
+>  
+> library("C50")
+Komunikat ostrzegawczy:
+pakiet ‘C50’ został zbudowany w wersji R 4.2.3 
+> setwd("C:/Users/asiat")
+> dane <- read.csv('smartfony.csv')
+> dane$ocena_klientow <- factor(dane$ocena_klientow)
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto
+1       Samsung Galaxy S20         6.4          6              128      12Mpix
+2       Samsung Galaxy M22         6.4          8               64      48Mpix
+3       Samsung Galaxy A12         6.2          6              128      32Mpix
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix
+  cena liczba_opinii ocena_klientow  status_opinii
+1 2599           320              5 wiecej niz 200
+2 2399           108            4.5 wiecej niz 100
+3 2599           254            3.5 wiecej niz 200
+4 1599            32              4   mniej niz 50
+5 1699             9              2   mniej niz 10
+6 2799           256              5 wiecej niz 200
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow
+1       Samsung Galaxy S20         6.4          6              128      12Mpix 2599           320              5
+2       Samsung Galaxy M22         6.4          8               64      48Mpix 2399           108            4.5
+3       Samsung Galaxy A12         6.2          6              128      32Mpix 2599           254            3.5
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix 1599            32              4
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix 1699             9              2
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix 2799           256              5
+   status_opinii
+1 wiecej niz 200
+2 wiecej niz 100
+3 wiecej niz 200
+4   mniej niz 50
+5   mniej niz 10
+6 wiecej niz 200
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128      12Mpix 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64      48Mpix 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128      32Mpix 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix 2799           256              5 wiecej niz 200
+> treeModel <- C5.0(x=dane[,-9], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, -9], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 8 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128      12Mpix 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64      48Mpix 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128      32Mpix 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix 2799           256              5 wiecej niz 200
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, -9], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 21:02:25 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (9 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad4\\zad4.RData")
+> treeModel <- C5.0(x=dane[,-7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, -7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 8 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128      12Mpix 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64      48Mpix 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128      32Mpix 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix 2799           256              5 wiecej niz 200
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, -7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 21:43:24 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (9 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> plot(treeModel)
+BŁĄD: nie można wyświetlić okienka ekranu na wierzchu (siatka oraz grafika pomieszały się?)
+BŁĄD: nie można wyświetlić okienka ekranu na wierzchu (siatka oraz grafika pomieszały się?)
+> > > 
+> plot(treeModel)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad4\\zad4.RData")
+> dane <- read.csv('fridges.csv')
+Błąd w poleceniu 'file(file, "rt")':nie można otworzyć połączenia
+Dodatkowo: Komunikat ostrzegawczy:
+W poleceniu 'file(file, "rt")':
+  nie można otworzyć pliku 'fridges.csv': No such file or directory
+> dane$ocena_klientow <- factor(dane$ocena_klientow)
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128      12Mpix 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64      48Mpix 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128      32Mpix 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256      48Mpix 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256      32Mpix 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256      12Mpix 2799           256              5 wiecej niz 200
+> treeModel <- C5.0(x=dane[,-7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, -7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 8 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, -7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 21:49:25 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (9 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,-7], y=dane$ocena_klientow)
+> treeModel <- C5.0(x=dane[,2:8], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 7 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:28:52 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (8 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 6 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:29:23 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto in {32Mpix,24Mpix}: 3.5 (7/2)
+aparat_foto in {12Mpix,48Mpix,8Mpix,64Mpix}:
+:...liczba_opinii <= 201: 4.5 (5/1)
+    liczba_opinii > 201: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    3(20.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         53.33% liczba_opinii
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+Komunikaty ostrzegawcze:
+1: W poleceniu 'partysplit(varid = as.integer(i), breaks = as.numeric(j[1]), ':
+  pojawiły się wartości NA na skutek przekształcenia
+2: W poleceniu '.bincode(as.numeric(x), breaks = unique(c(-Inf, breaks_split(split), ':
+  pojawiły się wartości NA na skutek przekształcenia
+> treeModel <- C5.0(x=dane[,1:7], y=dane$ocena_klientow)
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 1:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:30:28 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (8 attributes) from undefined.data
+
+Decision tree:
+ 3.5 (15/10)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             1   10(66.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   2                      (c): class 4
+                   4                      (d): class 4.5
+                   3                      (e): class 5
+
+
+Time: 0.0 secs
+
+> treeModel <- C5.0(x=dane[,1:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 1:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 7 
+
+Tree size: 1 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 1:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:30:33 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (8 attributes) from undefined.data
+
+Decision tree:
+ 3.5 (15/10)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             1   10(66.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   2                      (c): class 4
+                   4                      (d): class 4.5
+                   3                      (e): class 5
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:6], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 5 
+
+Tree size: 4 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:31:00 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (6 attributes) from undefined.data
+
+Decision tree:
+
+wyswietlacz > 6.5: 4 (2/1)
+wyswietlacz <= 6.5:
+:...aparat_foto = 12Mpix: 5 (3/1)
+    aparat_foto in {48Mpix,8Mpix,64Mpix}: 4.5 (3)
+    aparat_foto in {32Mpix,24Mpix}: 3.5 (7/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             4    4(26.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1     1                (c): class 4
+                               3     1    (d): class 4.5
+                         1           2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% wyswietlacz
+         86.67% aparat_foto
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+Komunikaty ostrzegawcze:
+1: W poleceniu 'partysplit(varid = as.integer(i), breaks = as.numeric(j[1]), ':
+  pojawiły się wartości NA na skutek przekształcenia
+2: W poleceniu '.bincode(as.numeric(x), breaks = unique(c(-Inf, breaks_split(split), ':
+  pojawiły się wartości NA na skutek przekształcenia
+> smartfony
+BŁĄD: nie znaleziono obiektu 'smartfony'
+> treeModel <- C5.0(x=dane[,3:6], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 3:6], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 4 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 3:6], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:32:29 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto in {32Mpix,24Mpix}: 3.5 (7/2)
+aparat_foto in {12Mpix,48Mpix,8Mpix,64Mpix}:
+:...cena <= 2399: 4.5 (4/1)
+    cena > 2399: 5 (4/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    4(26.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               3     1    (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         53.33% cena
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+Komunikaty ostrzegawcze:
+1: W poleceniu 'partysplit(varid = as.integer(i), breaks = as.numeric(j[1]), ':
+  pojawiły się wartości NA na skutek przekształcenia
+2: W poleceniu '.bincode(as.numeric(x), breaks = unique(c(-Inf, breaks_split(split), ':
+  pojawiły się wartości NA na skutek przekształcenia
+> treeModel <- C5.0(x=dane[,2:9], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:9], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 8 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:9], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:33:07 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (9 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:8], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 7 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:33:36 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (8 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> treeModel <- C5.0(x=dane[,2:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 6 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:33:52 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto in {32Mpix,24Mpix}: 3.5 (7/2)
+aparat_foto in {12Mpix,48Mpix,8Mpix,64Mpix}:
+:...liczba_opinii <= 201: 4.5 (5/1)
+    liczba_opinii > 201: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    3(20.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         53.33% liczba_opinii
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+Komunikaty ostrzegawcze:
+1: W poleceniu 'partysplit(varid = as.integer(i), breaks = as.numeric(j[1]), ':
+  pojawiły się wartości NA na skutek przekształcenia
+2: W poleceniu '.bincode(as.numeric(x), breaks = unique(c(-Inf, breaks_split(split), ':
+  pojawiły się wartości NA na skutek przekształcenia
+> setwd("C:/Users/asiat")
+> > dane <- read.csv('smartfony.csv')
+BŁĄD: nieoczekiwane '>' w ">"
+> > dane$ocena_klientow <- factor(dane$ocena_klientow)
+BŁĄD: nieoczekiwane '>' w ">"
+> > head(dane)
+BŁĄD: nieoczekiwane '>' w ">"
+> setwd("C:/Users/asiat")
+> dane <- read.csv('smartfony.csv')
+> dane$ocena_klientow <- factor(dane$ocena_klientow)
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128          12 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64          48 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128          32 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256          48 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256          32 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256          12 2799           256              5 wiecej niz 200
+> treeModel <- C5.0(x=dane[,-9], y=dane$ocena_klientow)
+> treeModel <- C5.0(x=dane[,2:8], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 7 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:8], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:39:35 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (8 attributes) from undefined.data
+
+Decision tree:
+
+ocena_klientow = 2: 2 (1)
+ocena_klientow = 3.5: 3.5 (5)
+ocena_klientow = 4: 4 (2)
+ocena_klientow = 4.5: 4.5 (4)
+ocena_klientow = 5: 5 (3)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    0( 0.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                               4          (d): class 4.5
+                                     3    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% ocena_klientow
+
+
+Time: 0.0 secs
+
+> 
+> treeModel <- C5.0(x=dane[,2:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 6 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:40:10 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+liczba_opinii <= 201: 4.5 (8/4)
+liczba_opinii > 201:
+:...aparat_foto <= 12: 5 (2)
+    aparat_foto > 12: 3.5 (5/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    5(33.3%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                               1          (a): class 2
+                   4           1          (b): class 3.5
+                               2          (c): class 4
+                               4          (d): class 4.5
+                   1                 2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% liczba_opinii
+         46.67% aparat_foto
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:6], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 5 
+
+Tree size: 4 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:41:02 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (6 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto <= 12:
+:...cena <= 1699: 4.5 (2)
+:   cena > 1699: 5 (2)
+aparat_foto > 12:
+:...aparat_foto <= 32: 3.5 (7/2)
+    aparat_foto > 32: 4.5 (4/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             4    4(26.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                               1     2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         26.67% cena
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+Błąd w poleceniu 'unit(0.5, "npc")':
+  nie można wyświetlić okienka ekranu na wierzchu (siatka oraz grafika pomieszały się?)
+> > 
+> treeModel <- C5.0(x=dane[,2:5], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:5], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 4 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:5], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:42:00 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto <= 12: 4.5 (4/2)
+aparat_foto > 12:
+:...aparat_foto <= 32: 3.5 (7/2)
+    aparat_foto > 32: 4.5 (4/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    6(40.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                               3          (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+
+
+Time: 0.0 secs
+
+> treeModel <- C5.0(x=dane[,3:6], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 3:6], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 4 
+
+Tree size: 4 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 3:6], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:42:32 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto <= 12:
+:...cena <= 1699: 4.5 (2)
+:   cena > 1699: 5 (2)
+aparat_foto > 12:
+:...aparat_foto <= 32: 3.5 (7/2)
+    aparat_foto > 32: 4.5 (4/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             4    4(26.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                               1     2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         26.67% cena
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 6 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:44:34 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+liczba_opinii <= 201: 4.5 (8/4)
+liczba_opinii > 201:
+:...aparat_foto <= 12: 5 (2)
+    aparat_foto > 12: 3.5 (5/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    5(33.3%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                               1          (a): class 2
+                   4           1          (b): class 3.5
+                               2          (c): class 4
+                               4          (d): class 4.5
+                   1                 2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% liczba_opinii
+         46.67% aparat_foto
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:7], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 6 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:7], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:44:58 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+liczba_opinii <= 201: 4.5 (8/4)
+liczba_opinii > 201:
+:...aparat_foto <= 12: 5 (2)
+    aparat_foto > 12: 3.5 (5/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    5(33.3%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                               1          (a): class 2
+                   4           1          (b): class 3.5
+                               2          (c): class 4
+                               4          (d): class 4.5
+                   1                 2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% liczba_opinii
+         46.67% aparat_foto
+
+
+Time: 0.0 secs
+
+> treeModel <- C5.0(x=dane[,2:6], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 5 
+
+Tree size: 4 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:6], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:45:25 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (6 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto <= 12:
+:...cena <= 1699: 4.5 (2)
+:   cena > 1699: 5 (2)
+aparat_foto > 12:
+:...aparat_foto <= 32: 3.5 (7/2)
+    aparat_foto > 32: 4.5 (4/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             4    4(26.7%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                               1     2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+         26.67% cena
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:3], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:3], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 2 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:3], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:46:22 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (3 attributes) from undefined.data
+
+Decision tree:
+
+pamiec_ram > 6: 3.5 (6/3)
+pamiec_ram <= 6:
+:...wyswietlacz <= 6.2: 3.5 (3/1)
+    wyswietlacz > 6.2: 4 (6/4)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    8(53.3%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                         1                (a): class 2
+                   5                      (b): class 3.5
+                         2                (c): class 4
+                   2     2                (d): class 4.5
+                   2     1                (e): class 5
+
+
+        Attribute usage:
+
+        100.00% pamiec_ram
+         60.00% wyswietlacz
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:4], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:4], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 3 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:4], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:46:53 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (4 attributes) from undefined.data
+
+Decision tree:
+
+pamiec_ram > 6:
+:...pamiec_wbudowana <= 128: 3.5 (3/1)
+:   pamiec_wbudowana > 128: 5 (3/1)
+pamiec_ram <= 6:
+:...wyswietlacz <= 6.2: 3.5 (3/1)
+    wyswietlacz > 6.2:
+    :...wyswietlacz <= 6.4: 2 (3/2)
+        wyswietlacz > 6.4: 4.5 (3/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    6(40.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   4                 1    (b): class 3.5
+             1                 1          (c): class 4
+                   2           2          (d): class 4.5
+             1                       2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% pamiec_ram
+         60.00% wyswietlacz
+         40.00% pamiec_wbudowana
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> treeModel <- C5.0(x=dane[,2:5], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:5], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 4 
+
+Tree size: 3 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:5], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:48:20 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+aparat_foto <= 12: 4.5 (4/2)
+aparat_foto > 12:
+:...aparat_foto <= 32: 3.5 (7/2)
+    aparat_foto > 32: 4.5 (4/2)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             3    6(40.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+                   1                      (a): class 2
+                   5                      (b): class 3.5
+                   1           1          (c): class 4
+                               4          (d): class 4.5
+                               3          (e): class 5
+
+
+        Attribute usage:
+
+        100.00% aparat_foto
+
+
+Time: 0.0 secs
+
+> 
+> 
+> 
+> 
+> library("C50")
+> dane <- read.csv('smartfony.csv')
+> dane$ocena_klientow <- factor(dane$ocena_klientow)
+> head(dane)
+                     nazwa wyswietlacz pamiec_ram pamiec_wbudowana aparat_foto cena liczba_opinii ocena_klientow  status_opinii
+1       Samsung Galaxy S20         6.4          6              128          12 2599           320              5 wiecej niz 200
+2       Samsung Galaxy M22         6.4          8               64          48 2399           108            4.5 wiecej niz 100
+3       Samsung Galaxy A12         6.2          6              128          32 2599           254            3.5 wiecej niz 200
+4    Samsung Galaxy Z Flip         6.7          6              256          48 1599            32              4   mniej niz 50
+5  Samsung Galaxy M22 Grey         6.4          6              256          32 1699             9              2   mniej niz 10
+6 Samsung Galaxy A12 Black         6.5          8              256          12 2799           256              5 wiecej niz 200
+> treeModel <- C5.0(x=dane[,2:4], y=dane$ocena_klientow)
+> treeModel
+
+Call:
+C5.0.default(x = dane[, 2:4], y = dane$ocena_klientow)
+
+Classification Tree
+Number of samples: 15 
+Number of predictors: 3 
+
+Tree size: 5 
+
+Non-standard options: attempt to group attributes
+
+> summary(treeModel)
+
+Call:
+C5.0.default(x = dane[, 2:4], y = dane$ocena_klientow)
+
+
+C5.0 [Release 2.07 GPL Edition]         Wed Apr 26 22:50:42 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 15 cases (4 attributes) from undefined.data
+
+Decision tree:
+
+pamiec_ram > 6:
+:...pamiec_wbudowana <= 128: 3.5 (3/1)
+:   pamiec_wbudowana > 128: 5 (3/1)
+pamiec_ram <= 6:
+:...wyswietlacz <= 6.2: 3.5 (3/1)
+    wyswietlacz > 6.2:
+    :...wyswietlacz <= 6.4: 2 (3/2)
+        wyswietlacz > 6.4: 4.5 (3/1)
+
+
+Evaluation on training data (15 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             5    6(40.0%)   <<
+
+
+           (a)   (b)   (c)   (d)   (e)    <-classified as
+          ----  ----  ----  ----  ----
+             1                            (a): class 2
+                   4                 1    (b): class 3.5
+             1                 1          (c): class 4
+                   2           2          (d): class 4.5
+             1                       2    (e): class 5
+
+
+        Attribute usage:
+
+        100.00% pamiec_ram
+         60.00% wyswietlacz
+         40.00% pamiec_wbudowana
+
+
+Time: 0.0 secs
+
+> plot(treeModel)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad4\\zad4.RData")
+> 
