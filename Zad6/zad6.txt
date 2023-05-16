@@ -1,0 +1,4685 @@
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R jest oprogramowaniem darmowym i dostarczany jest BEZ JAKIEJKOLWIEK GWARANCJI.
+Możesz go rozpowszechniać pod pewnymi warunkami.
+Wpisz 'license()' lub 'licence()' aby uzyskać szczegóły dystrybucji.
+
+R jest projektem kolaboracyjnym z wieloma uczestnikami.
+Wpisz 'contributors()' aby uzyskać więcej informacji oraz
+'citation()' aby dowiedzieć się jak cytować R lub pakiety R w publikacjach.
+
+Wpisz 'demo()' aby zobaczyć demo, 'help()' aby uzyskać pomoc on-line, lub
+'help.start()' aby uzyskać pomoc w przeglądarce HTML.
+Wpisz 'q()' aby wyjść z R.
+
+[Poprzednio zapisany obszar roboczy został przywrócony]
+
+> library(reticulate)
+Komunikat ostrzegawczy:
+pakiet ‘reticulate’ został zbudowany w wersji R 4.2.3 
+> 
+> reticulate::install_miniconda()
+BŁĄD: Miniconda is already installed at path "C:/Users/asiat/AppData/Local/r-miniconda".
+- Use `reticulate::install_miniconda(force = TRUE)` to overwrite the previous installation.
+> tensorflow::install_tensorflow()
+
+C:\Users\asiat\Documents>CALL "C:\Users\asiat\AppData\Local\r-miniconda\condabin\activate.bat" "C:\Users\asiat\AppData\Local\r-miniconda\envs\r-reticulate" 
+
+C:\Users\asiat\Documents>conda.bat activate "C:\Users\asiat\AppData\Local\r-miniconda\envs\r-reticulate" 
+Collecting tensorflow==2.11.*
+  Using cached tensorflow-2.11.1-cp38-cp38-win_amd64.whl (1.9 kB)
+Collecting tensorflow-intel==2.11.1 (from tensorflow==2.11.*)
+  Using cached tensorflow_intel-2.11.1-cp38-cp38-win_amd64.whl (266.3 MB)
+Collecting absl-py>=1.0.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached absl_py-1.4.0-py3-none-any.whl (126 kB)
+Collecting astunparse>=1.6.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting flatbuffers>=2.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached flatbuffers-23.5.9-py2.py3-none-any.whl (26 kB)
+Collecting gast<=0.4.0,>=0.2.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached gast-0.4.0-py3-none-any.whl (9.8 kB)
+Collecting google-pasta>=0.1.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Collecting h5py>=2.9.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached h5py-3.8.0-cp38-cp38-win_amd64.whl (2.7 MB)
+Collecting libclang>=13.0.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached libclang-16.0.0-py2.py3-none-win_amd64.whl (24.4 MB)
+Collecting numpy>=1.20 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached numpy-1.24.3-cp38-cp38-win_amd64.whl (14.9 MB)
+Collecting opt-einsum>=2.3.2 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Collecting packaging (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached packaging-23.1-py3-none-any.whl (48 kB)
+Collecting protobuf<3.20,>=3.9.2 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached protobuf-3.19.6-cp38-cp38-win_amd64.whl (896 kB)
+Collecting setuptools (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached setuptools-67.7.2-py3-none-any.whl (1.1 MB)
+Collecting six>=1.12.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting termcolor>=1.1.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached termcolor-2.3.0-py3-none-any.whl (6.9 kB)
+Collecting typing-extensions>=3.6.6 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached typing_extensions-4.5.0-py3-none-any.whl (27 kB)
+Collecting wrapt>=1.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached wrapt-1.15.0-cp38-cp38-win_amd64.whl (36 kB)
+Collecting grpcio<2.0,>=1.24.3 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached grpcio-1.54.2-cp38-cp38-win_amd64.whl (4.1 MB)
+Collecting tensorboard<2.12,>=2.11 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Collecting tensorflow-estimator<2.12,>=2.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorflow_estimator-2.11.0-py2.py3-none-any.whl (439 kB)
+Collecting keras<2.12,>=2.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached keras-2.11.0-py2.py3-none-any.whl (1.7 MB)
+Collecting tensorflow-io-gcs-filesystem>=0.23.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorflow_io_gcs_filesystem-0.31.0-cp38-cp38-win_amd64.whl (1.5 MB)
+Collecting wheel<1.0,>=0.23.0 (from astunparse>=1.6.0->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached wheel-0.40.0-py3-none-any.whl (64 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_auth-2.18.0-py2.py3-none-any.whl (178 kB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting markdown>=2.6.8 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached Markdown-3.4.3-py3-none-any.whl (93 kB)
+Collecting requests<3,>=2.21.0 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached requests-2.30.0-py3-none-any.whl (62 kB)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard_data_server-0.6.1-py3-none-any.whl (2.4 kB)
+Collecting tensorboard-plugin-wit>=1.6.0 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached Werkzeug-2.3.4-py3-none-any.whl (242 kB)
+Collecting cachetools<6.0,>=2.0.0 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached cachetools-5.3.0-py3-none-any.whl (9.3 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached pyasn1_modules-0.3.0-py2.py3-none-any.whl (181 kB)
+Collecting urllib3<2.0 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached urllib3-1.26.15-py2.py3-none-any.whl (140 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached rsa-4.9-py3-none-any.whl (34 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting importlib-metadata>=4.4 (from markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached importlib_metadata-6.6.0-py3-none-any.whl (22 kB)
+Collecting charset-normalizer<4,>=2 (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached charset_normalizer-3.1.0-cp38-cp38-win_amd64.whl (96 kB)
+Collecting idna<4,>=2.5 (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached idna-3.4-py3-none-any.whl (61 kB)
+Collecting certifi>=2017.4.17 (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached certifi-2023.5.7-py3-none-any.whl (156 kB)
+Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached MarkupSafe-2.1.2-cp38-cp38-win_amd64.whl (16 kB)
+Collecting zipp>=0.5 (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached zipp-3.15.0-py3-none-any.whl (6.8 kB)
+Collecting pyasn1<0.6.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached pyasn1-0.5.0-py2.py3-none-any.whl (83 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached oauthlib-3.2.2-py3-none-any.whl (151 kB)
+Installing collected packages: tensorboard-plugin-wit, libclang, flatbuffers, zipp, wrapt, wheel, urllib3, typing-extensions, termcolor, tensorflow-io-gcs-filesystem, tensorflow-estimator, tensorboard-data-server, six, setuptools, pyasn1, protobuf, packaging, oauthlib, numpy, MarkupSafe, keras, idna, grpcio, gast, charset-normalizer, certifi, cachetools, absl-py, werkzeug, rsa, requests, pyasn1-modules, opt-einsum, importlib-metadata, h5py, google-pasta, astunparse, requests-oauthlib, markdown, google-auth, google-auth-oauthlib, tensorboard, tensorflow-intel, tensorflow
+Successfully installed MarkupSafe-2.1.2 absl-py-1.4.0 astunparse-1.6.3 cachetools-5.3.0 certifi-2023.5.7 charset-normalizer-3.1.0 flatbuffers-23.5.9 gast-0.4.0 google-auth-2.18.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.54.2 h5py-3.8.0 idna-3.4 importlib-metadata-6.6.0 keras-2.11.0 libclang-16.0.0 markdown-3.4.3 numpy-1.24.3 oauthlib-3.2.2 opt-einsum-3.3.0 packaging-23.1 protobuf-3.19.6 pyasn1-0.5.0 pyasn1-modules-0.3.0 requests-2.30.0 requests-oauthlib-1.3.1 rsa-4.9 setuptools-67.7.2 six-1.16.0 tensorboard-2.11.2 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.11.1 tensorflow-estimator-2.11.0 tensorflow-intel-2.11.1 tensorflow-io-gcs-filesystem-0.31.0 termcolor-2.3.0 typing-extensions-4.5.0 urllib3-1.26.15 werkzeug-2.3.4 wheel-0.40.0 wrapt-1.15.0 zipp-3.15.0
+
+Installation complete.
+
+> library("tensorflow")
+Komunikat ostrzegawczy:
+pakiet ‘tensorflow’ został zbudowany w wersji R 4.2.3 
+> keras::install_keras()
+
+C:\Users\asiat\Documents>CALL "C:\Users\asiat\AppData\Local\r-miniconda\condabin\activate.bat" "C:\Users\asiat\AppData\Local\r-miniconda\envs\r-reticulate" 
+
+C:\Users\asiat\Documents>conda.bat activate "C:\Users\asiat\AppData\Local\r-miniconda\envs\r-reticulate" 
+Collecting tensorflow==2.11.*
+  Using cached tensorflow-2.11.1-cp38-cp38-win_amd64.whl (1.9 kB)
+Collecting tensorflow-hub
+  Using cached tensorflow_hub-0.13.0-py2.py3-none-any.whl (100 kB)
+Collecting tensorflow-datasets
+  Using cached tensorflow_datasets-4.9.2-py3-none-any.whl (5.4 MB)
+Collecting scipy
+  Using cached scipy-1.10.1-cp38-cp38-win_amd64.whl (42.2 MB)
+Collecting requests
+  Using cached requests-2.30.0-py3-none-any.whl (62 kB)
+Collecting Pillow
+  Using cached Pillow-9.5.0-cp38-cp38-win_amd64.whl (2.5 MB)
+Collecting h5py
+  Using cached h5py-3.8.0-cp38-cp38-win_amd64.whl (2.7 MB)
+Collecting pandas
+  Using cached pandas-2.0.1-cp38-cp38-win_amd64.whl (10.8 MB)
+Collecting pydot
+  Using cached pydot-1.4.2-py2.py3-none-any.whl (21 kB)
+Collecting tensorflow-intel==2.11.1 (from tensorflow==2.11.*)
+  Using cached tensorflow_intel-2.11.1-cp38-cp38-win_amd64.whl (266.3 MB)
+Collecting absl-py>=1.0.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached absl_py-1.4.0-py3-none-any.whl (126 kB)
+Collecting astunparse>=1.6.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting flatbuffers>=2.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached flatbuffers-23.5.9-py2.py3-none-any.whl (26 kB)
+Collecting gast<=0.4.0,>=0.2.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached gast-0.4.0-py3-none-any.whl (9.8 kB)
+Collecting google-pasta>=0.1.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Collecting libclang>=13.0.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached libclang-16.0.0-py2.py3-none-win_amd64.whl (24.4 MB)
+Collecting numpy>=1.20 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached numpy-1.24.3-cp38-cp38-win_amd64.whl (14.9 MB)
+Collecting opt-einsum>=2.3.2 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Collecting packaging (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached packaging-23.1-py3-none-any.whl (48 kB)
+Collecting protobuf<3.20,>=3.9.2 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached protobuf-3.19.6-cp38-cp38-win_amd64.whl (896 kB)
+Collecting setuptools (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached setuptools-67.7.2-py3-none-any.whl (1.1 MB)
+Collecting six>=1.12.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting termcolor>=1.1.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached termcolor-2.3.0-py3-none-any.whl (6.9 kB)
+Collecting typing-extensions>=3.6.6 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached typing_extensions-4.5.0-py3-none-any.whl (27 kB)
+Collecting wrapt>=1.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached wrapt-1.15.0-cp38-cp38-win_amd64.whl (36 kB)
+Collecting grpcio<2.0,>=1.24.3 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached grpcio-1.54.2-cp38-cp38-win_amd64.whl (4.1 MB)
+Collecting tensorboard<2.12,>=2.11 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Collecting tensorflow-estimator<2.12,>=2.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorflow_estimator-2.11.0-py2.py3-none-any.whl (439 kB)
+Collecting keras<2.12,>=2.11.0 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached keras-2.11.0-py2.py3-none-any.whl (1.7 MB)
+Collecting tensorflow-io-gcs-filesystem>=0.23.1 (from tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorflow_io_gcs_filesystem-0.31.0-cp38-cp38-win_amd64.whl (1.5 MB)
+Collecting array-record (from tensorflow-datasets)
+  Using cached array_record-0.2.0-py38-none-any.whl (3.0 MB)
+Collecting click (from tensorflow-datasets)
+  Using cached click-8.1.3-py3-none-any.whl (96 kB)
+Collecting dm-tree (from tensorflow-datasets)
+  Using cached dm_tree-0.1.8-cp38-cp38-win_amd64.whl (101 kB)
+Collecting etils[enp,epath]>=0.9.0 (from tensorflow-datasets)
+  Using cached etils-1.3.0-py3-none-any.whl (126 kB)
+Collecting promise (from tensorflow-datasets)
+  Using cached promise-2.3-py3-none-any.whl
+INFO: pip is looking at multiple versions of tensorflow-datasets to determine which version is compatible with other requirements. This could take a while.
+Collecting tensorflow-datasets
+  Using cached tensorflow_datasets-4.9.1-py3-none-any.whl (5.4 MB)
+  Using cached tensorflow_datasets-4.9.0-py3-none-any.whl (5.4 MB)
+Collecting psutil (from tensorflow-datasets)
+  Using cached psutil-5.9.5-cp36-abi3-win_amd64.whl (255 kB)
+Collecting tensorflow-metadata (from tensorflow-datasets)
+  Using cached tensorflow_metadata-1.13.1-py3-none-any.whl (28 kB)
+Collecting toml (from tensorflow-datasets)
+  Using cached toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Collecting tqdm (from tensorflow-datasets)
+  Using cached tqdm-4.65.0-py3-none-any.whl (77 kB)
+Collecting importlib-resources (from tensorflow-datasets)
+  Using cached importlib_resources-5.12.0-py3-none-any.whl (36 kB)
+Collecting charset-normalizer<4,>=2 (from requests)
+  Using cached charset_normalizer-3.1.0-cp38-cp38-win_amd64.whl (96 kB)
+Collecting idna<4,>=2.5 (from requests)
+  Using cached idna-3.4-py3-none-any.whl (61 kB)
+Collecting urllib3<3,>=1.21.1 (from requests)
+  Using cached urllib3-2.0.2-py3-none-any.whl (123 kB)
+Collecting certifi>=2017.4.17 (from requests)
+  Using cached certifi-2023.5.7-py3-none-any.whl (156 kB)
+Collecting python-dateutil>=2.8.2 (from pandas)
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Using cached pytz-2023.3-py2.py3-none-any.whl (502 kB)
+Collecting tzdata>=2022.1 (from pandas)
+  Using cached tzdata-2023.3-py2.py3-none-any.whl (341 kB)
+Collecting pyparsing>=2.1.4 (from pydot)
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting zipp (from etils[enp,epath]>=0.9.0->tensorflow-datasets)
+  Using cached zipp-3.15.0-py3-none-any.whl (6.8 kB)
+Collecting colorama (from click->tensorflow-datasets)
+  Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting googleapis-common-protos<2,>=1.52.0 (from tensorflow-metadata->tensorflow-datasets)
+  Using cached googleapis_common_protos-1.59.0-py2.py3-none-any.whl (223 kB)
+INFO: pip is looking at multiple versions of tensorflow-metadata to determine which version is compatible with other requirements. This could take a while.
+Collecting tensorflow-metadata (from tensorflow-datasets)
+  Using cached tensorflow_metadata-1.13.0-py3-none-any.whl (53 kB)
+Collecting wheel<1.0,>=0.23.0 (from astunparse>=1.6.0->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached wheel-0.40.0-py3-none-any.whl (64 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_auth-2.18.0-py2.py3-none-any.whl (178 kB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting markdown>=2.6.8 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached Markdown-3.4.3-py3-none-any.whl (93 kB)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard_data_server-0.6.1-py3-none-any.whl (2.4 kB)
+Collecting tensorboard-plugin-wit>=1.6.0 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached Werkzeug-2.3.4-py3-none-any.whl (242 kB)
+Collecting cachetools<6.0,>=2.0.0 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached cachetools-5.3.0-py3-none-any.whl (9.3 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached pyasn1_modules-0.3.0-py2.py3-none-any.whl (181 kB)
+Collecting urllib3<3,>=1.21.1 (from requests)
+  Using cached urllib3-1.26.15-py2.py3-none-any.whl (140 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached rsa-4.9-py3-none-any.whl (34 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting importlib-metadata>=4.4 (from markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached importlib_metadata-6.6.0-py3-none-any.whl (22 kB)
+Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached MarkupSafe-2.1.2-cp38-cp38-win_amd64.whl (16 kB)
+Collecting pyasn1<0.6.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached pyasn1-0.5.0-py2.py3-none-any.whl (83 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.12,>=2.11->tensorflow-intel==2.11.1->tensorflow==2.11.*)
+  Using cached oauthlib-3.2.2-py3-none-any.whl (151 kB)
+Installing collected packages: tensorboard-plugin-wit, pytz, libclang, flatbuffers, dm-tree, zipp, wrapt, wheel, urllib3, tzdata, typing-extensions, toml, termcolor, tensorflow-io-gcs-filesystem, tensorflow-estimator, tensorboard-data-server, six, setuptools, pyparsing, pyasn1, psutil, protobuf, Pillow, packaging, oauthlib, numpy, MarkupSafe, keras, idna, grpcio, gast, etils, colorama, charset-normalizer, certifi, cachetools, absl-py, werkzeug, tqdm, tensorflow-hub, scipy, rsa, requests, python-dateutil, pydot, pyasn1-modules, promise, opt-einsum, importlib-resources, importlib-metadata, h5py, googleapis-common-protos, google-pasta, click, astunparse, tensorflow-metadata, requests-oauthlib, pandas, markdown, google-auth, google-auth-oauthlib, array-record, tensorflow-datasets, tensorboard, tensorflow-intel, tensorflow
+Successfully installed MarkupSafe-2.1.2 Pillow-9.5.0 absl-py-1.4.0 array-record-0.2.0 astunparse-1.6.3 cachetools-5.3.0 certifi-2023.5.7 charset-normalizer-3.1.0 click-8.1.3 colorama-0.4.6 dm-tree-0.1.8 etils-1.3.0 flatbuffers-23.5.9 gast-0.4.0 google-auth-2.18.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 googleapis-common-protos-1.59.0 grpcio-1.54.2 h5py-3.8.0 idna-3.4 importlib-metadata-6.6.0 importlib-resources-5.12.0 keras-2.11.0 libclang-16.0.0 markdown-3.4.3 numpy-1.24.3 oauthlib-3.2.2 opt-einsum-3.3.0 packaging-23.1 pandas-2.0.1 promise-2.3 protobuf-3.19.6 psutil-5.9.5 pyasn1-0.5.0 pyasn1-modules-0.3.0 pydot-1.4.2 pyparsing-3.0.9 python-dateutil-2.8.2 pytz-2023.3 requests-2.30.0 requests-oauthlib-1.3.1 rsa-4.9 scipy-1.10.1 setuptools-67.7.2 six-1.16.0 tensorboard-2.11.2 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.11.1 tensorflow-datasets-4.9.0 tensorflow-estimator-2.11.0 tensorflow-hub-0.13.0 tensorflow-intel-2.11.1 tensorflow-io-gcs-filesystem-0.31.0 tensorflow-metadata-1.13.0 termcolor-2.3.0 toml-0.10.2 tqdm-4.65.0 typing-extensions-4.5.0 tzdata-2023.3 urllib3-1.26.15 werkzeug-2.3.4 wheel-0.40.0 wrapt-1.15.0 zipp-3.15.0
+
+Installation complete.
+
+> library("keras")
+Komunikat ostrzegawczy:
+pakiet ‘keras’ został zbudowany w wersji R 4.2.3 
+> cifar <- dataset_cifar10()
+> 
+> x_train <- cifar$train$x
+> x_test <- cifar$test$x
+> y_train <- cifar$train$y
+> y_test <- cifar$test$y
+> x_train <- array_reshape(x_train, c(nrow(x_train), 3072))
+> x_train <- x_train / 255   
+> x_test <- array_reshape(x_test, c(nrow(x_test), 3072))
+> x_test <- x_test / 255
+> y_train <- to_categorical(y_train, num_classes = 10)
+> y_test <- to_categorical(y_test, num_classes = 10)
+> model <- keras_model_sequential() %>%layer_dense(units = 256, activation = "relu", input_shape = c(3072)) %>% layer_dropout(rate = 0.25) %>% layer_dense(units = 128, activation = "relu") %>% layer_dropout(rate = 0.25) %>% layer_dense(units = 64, activation = "relu") %>% layer_dropout(rate = 0.25) %>% layer_dense(units = 10, activation = "relu")
+> summary(model)
+Model: "sequential"
+_______________________________________________________________________________________________________________________________________
+ Layer (type)                                               Output Shape                                          Param #              
+=======================================================================================================================================
+ dense_3 (Dense)                                            (None, 256)                                           786688               
+ dropout_2 (Dropout)                                        (None, 256)                                           0                    
+ dense_2 (Dense)                                            (None, 128)                                           32896                
+ dropout_1 (Dropout)                                        (None, 128)                                           0                    
+ dense_1 (Dense)                                            (None, 64)                                            8256                 
+ dropout (Dropout)                                          (None, 64)                                            0                    
+ dense (Dense)                                              (None, 10)                                            650                  
+=======================================================================================================================================
+Total params: 828,490
+Trainable params: 828,490
+Non-trainable params: 0
+_______________________________________________________________________________________________________________________________________
+> model %>% compile(loss = "categorical_crossentropy",optimizer = optimizer_adam(), metrics = c("accuracy"))
+> 
+> history <- model %>% fit(x_train, y_train, epochs = 50, batch_size = 128, validation_split = 0.15)
+Epoch 1/50
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 4s 9ms/step - loss: 2.9654 - accuracy: 0.1065
+
+333/333 [==============================] - 4s 10ms/step - loss: 2.9654 - accuracy: 0.1065 - val_loss: 2.2410 - val_accuracy: 0.1553
+Epoch 2/50
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.2572 - accuracy: 0.1413
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.2572 - accuracy: 0.1413 - val_loss: 2.1275 - val_accuracy: 0.1820
+Epoch 3/50
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.2107 - accuracy: 0.1564
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.2107 - accuracy: 0.1564 - val_loss: 2.0942 - val_accuracy: 0.1989
+Epoch 4/50
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.1778 - accuracy: 0.1702
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.1778 - accuracy: 0.1702 - val_loss: 2.0794 - val_accuracy: 0.1989
+Epoch 5/50
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.1674 - accuracy: 0.1681
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.1674 - accuracy: 0.1681 - val_loss: 2.1478 - val_accuracy: 0.1703
+Epoch 6/50
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.1444 - accuracy: 0.1724
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.1444 - accuracy: 0.1724 - val_loss: 2.0827 - val_accuracy: 0.1923
+Epoch 7/50
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1218 - accuracy: 0.1784
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.1218 - accuracy: 0.1784 - val_loss: 2.0622 - val_accuracy: 0.2016
+Epoch 8/50
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1416 - accuracy: 0.1715
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1416 - accuracy: 0.1715 - val_loss: 2.1593 - val_accuracy: 0.1701
+Epoch 9/50
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1515 - accuracy: 0.1636
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1515 - accuracy: 0.1636 - val_loss: 2.0839 - val_accuracy: 0.1784
+Epoch 10/50
+
+
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1148 - accuracy: 0.1714
+
+333/333 [==============================] - 3s 8ms/step - loss: 2.1148 - accuracy: 0.1714 - val_loss: 2.0665 - val_accuracy: 0.1865
+Epoch 11/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0981 - accuracy: 0.1777
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0981 - accuracy: 0.1777 - val_loss: 2.0649 - val_accuracy: 0.1895
+Epoch 12/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0816 - accuracy: 0.1810
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0816 - accuracy: 0.1810 - val_loss: 2.0594 - val_accuracy: 0.1885
+Epoch 13/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0727 - accuracy: 0.1859
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0727 - accuracy: 0.1859 - val_loss: 2.0490 - val_accuracy: 0.1883
+Epoch 14/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0827 - accuracy: 0.1854
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0827 - accuracy: 0.1854 - val_loss: 2.0297 - val_accuracy: 0.2151
+Epoch 15/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0553 - accuracy: 0.1993
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0553 - accuracy: 0.1993 - val_loss: 2.0148 - val_accuracy: 0.2199
+Epoch 16/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0441 - accuracy: 0.2234
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0441 - accuracy: 0.2234 - val_loss: 2.0284 - val_accuracy: 0.2384
+Epoch 17/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0209 - accuracy: 0.2514
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0209 - accuracy: 0.2514 - val_loss: 1.9516 - val_accuracy: 0.2929
+Epoch 18/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0244 - accuracy: 0.2428
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0244 - accuracy: 0.2428 - val_loss: 1.9501 - val_accuracy: 0.2729
+Epoch 19/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9843 - accuracy: 0.2638
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9843 - accuracy: 0.2638 - val_loss: 1.9158 - val_accuracy: 0.2953
+Epoch 20/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0048 - accuracy: 0.2619
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0048 - accuracy: 0.2619 - val_loss: 1.9314 - val_accuracy: 0.3007
+Epoch 21/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0030 - accuracy: 0.2602
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0030 - accuracy: 0.2602 - val_loss: 1.9379 - val_accuracy: 0.2933
+Epoch 22/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9564 - accuracy: 0.2787
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.9564 - accuracy: 0.2787 - val_loss: 1.9188 - val_accuracy: 0.2920
+Epoch 23/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9522 - accuracy: 0.2804
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.9522 - accuracy: 0.2804 - val_loss: 2.1135 - val_accuracy: 0.2341
+Epoch 24/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 2.0375 - accuracy: 0.2390
+
+333/333 [==============================] - 3s 10ms/step - loss: 2.0375 - accuracy: 0.2390 - val_loss: 1.9300 - val_accuracy: 0.2987
+Epoch 25/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9706 - accuracy: 0.2723
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.9706 - accuracy: 0.2723 - val_loss: 1.9011 - val_accuracy: 0.3088
+Epoch 26/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9393 - accuracy: 0.2878
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.9393 - accuracy: 0.2878 - val_loss: 1.8887 - val_accuracy: 0.3164
+Epoch 27/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9129 - accuracy: 0.2965
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.9129 - accuracy: 0.2965 - val_loss: 1.8538 - val_accuracy: 0.3225
+Epoch 28/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9113 - accuracy: 0.2999
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9113 - accuracy: 0.2999 - val_loss: 1.8451 - val_accuracy: 0.3264
+Epoch 29/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9003 - accuracy: 0.3071
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.9003 - accuracy: 0.3071 - val_loss: 1.8428 - val_accuracy: 0.3335
+Epoch 30/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8897 - accuracy: 0.3073
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8897 - accuracy: 0.3073 - val_loss: 1.8351 - val_accuracy: 0.3291
+Epoch 31/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8840 - accuracy: 0.3122
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8840 - accuracy: 0.3122 - val_loss: 1.8001 - val_accuracy: 0.3448
+Epoch 32/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8600 - accuracy: 0.3225
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8600 - accuracy: 0.3225 - val_loss: 1.7900 - val_accuracy: 0.3495
+Epoch 33/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8508 - accuracy: 0.3280
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8508 - accuracy: 0.3280 - val_loss: 1.7918 - val_accuracy: 0.3516
+Epoch 34/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8618 - accuracy: 0.3245
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8618 - accuracy: 0.3245 - val_loss: 1.7962 - val_accuracy: 0.3568
+Epoch 35/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8444 - accuracy: 0.3289
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8444 - accuracy: 0.3289 - val_loss: 1.7698 - val_accuracy: 0.3549
+Epoch 36/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8281 - accuracy: 0.3314
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8281 - accuracy: 0.3314 - val_loss: 1.8963 - val_accuracy: 0.2919
+Epoch 37/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8629 - accuracy: 0.3193
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8629 - accuracy: 0.3193 - val_loss: 1.7630 - val_accuracy: 0.3573
+Epoch 38/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8287 - accuracy: 0.3363
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8287 - accuracy: 0.3363 - val_loss: 1.7473 - val_accuracy: 0.3661
+Epoch 39/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8200 - accuracy: 0.3388
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8200 - accuracy: 0.3388 - val_loss: 1.7498 - val_accuracy: 0.3659
+Epoch 40/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8145 - accuracy: 0.3382
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8145 - accuracy: 0.3382 - val_loss: 1.7359 - val_accuracy: 0.3697
+Epoch 41/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8002 - accuracy: 0.3469
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8002 - accuracy: 0.3469 - val_loss: 1.7319 - val_accuracy: 0.3665
+Epoch 42/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7930 - accuracy: 0.3472
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7930 - accuracy: 0.3472 - val_loss: 1.7328 - val_accuracy: 0.3741
+Epoch 43/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8236 - accuracy: 0.3400
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8236 - accuracy: 0.3400 - val_loss: 1.7438 - val_accuracy: 0.3717
+Epoch 44/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7948 - accuracy: 0.3491
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7948 - accuracy: 0.3491 - val_loss: 1.7436 - val_accuracy: 0.3764
+Epoch 45/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8034 - accuracy: 0.3444
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8034 - accuracy: 0.3444 - val_loss: 1.7417 - val_accuracy: 0.3685
+Epoch 46/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.8020 - accuracy: 0.3461
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.8020 - accuracy: 0.3461 - val_loss: 1.7262 - val_accuracy: 0.3785
+Epoch 47/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7803 - accuracy: 0.3563
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7803 - accuracy: 0.3563 - val_loss: 1.6976 - val_accuracy: 0.3817
+Epoch 48/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7647 - accuracy: 0.3594
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7647 - accuracy: 0.3594 - val_loss: 1.6962 - val_accuracy: 0.3900
+Epoch 49/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7545 - accuracy: 0.3645
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7545 - accuracy: 0.3645 - val_loss: 1.6960 - val_accuracy: 0.3852
+Epoch 50/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 3s 9ms/step - loss: 1.7615 - accuracy: 0.3615
+
+333/333 [==============================] - 3s 10ms/step - loss: 1.7615 - accuracy: 0.3615 - val_loss: 1.6885 - val_accuracy: 0.3863
+> model %>% evaluate(x_test, y_test)
+
+
+
+
+
+
+
+
+
+313/313 [==============================] - 0s 1ms/step - loss: 1.6644 - accuracy: 0.3995
+
+313/313 [==============================] - 0s 1ms/step - loss: 1.6644 - accuracy: 0.3995
+    loss accuracy 
+1.664425 0.399500 
+> summary(model)
+Model: "sequential"
+_______________________________________________________________________________________________________________________________________
+ Layer (type)                                               Output Shape                                          Param #              
+=======================================================================================================================================
+ dense_3 (Dense)                                            (None, 256)                                           786688               
+ dropout_2 (Dropout)                                        (None, 256)                                           0                    
+ dense_2 (Dense)                                            (None, 128)                                           32896                
+ dropout_1 (Dropout)                                        (None, 128)                                           0                    
+ dense_1 (Dense)                                            (None, 64)                                            8256                 
+ dropout (Dropout)                                          (None, 64)                                            0                    
+ dense (Dense)                                              (None, 10)                                            650                  
+=======================================================================================================================================
+Total params: 828,490
+Trainable params: 828,490
+Non-trainable params: 0
+_______________________________________________________________________________________________________________________________________
+> #wersja splaszczona
+> cifar <- dataset_cifar10()
+> x_train <- cifar$train$x
+> x_test <- cifar$test$x
+> y_train <- cifar$train$y
+> y_test <- cifar$test$y
+> x_train <- x_train / 255
+> x_test <- x_test / 255
+> y_train <- to_categorical(y_train, num_classes = 10)
+> y_test <- to_categorical(y_test, num_classes = 10)
+> model <- keras_model_sequential() %>% layer_flatten(input_shape = c(32, 32, 3)) %>% layer_dense(units = 128, activation = "relu") %>% layer_dense(units = 10, activation = "softmax")
+> summary(model)
+Model: "sequential_1"
+_______________________________________________________________________________________________________________________________________
+ Layer (type)                                               Output Shape                                          Param #              
+=======================================================================================================================================
+ flatten (Flatten)                                          (None, 3072)                                          0                    
+ dense_5 (Dense)                                            (None, 128)                                           393344               
+ dense_4 (Dense)                                            (None, 10)                                            1290                 
+=======================================================================================================================================
+Total params: 394,634
+Trainable params: 394,634
+Non-trainable params: 0
+_______________________________________________________________________________________________________________________________________
+> model %>% compile(loss = "categorical_crossentropy", optimizer = optimizer_adam(), metrics = c("accuracy"))
+> history <- model %>% fit(x_train, y_train, epochs = 50, batch_size = 128, validation_split = 0.15)
+Epoch 1/50
+
+
+ 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 4ms/step - loss: 1.9881 - accuracy: 0.2817
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.9881 - accuracy: 0.2817 - val_loss: 1.8976 - val_accuracy: 0.3167
+Epoch 2/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.8180 - accuracy: 0.3479
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.8180 - accuracy: 0.3479 - val_loss: 1.7998 - val_accuracy: 0.3607
+Epoch 3/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.7580 - accuracy: 0.3736
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.7580 - accuracy: 0.3736 - val_loss: 1.7918 - val_accuracy: 0.3528
+Epoch 4/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.7244 - accuracy: 0.3848
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.7244 - accuracy: 0.3848 - val_loss: 1.7303 - val_accuracy: 0.3843
+Epoch 5/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6969 - accuracy: 0.3940
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6969 - accuracy: 0.3940 - val_loss: 1.7436 - val_accuracy: 0.3652
+Epoch 6/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6763 - accuracy: 0.4002
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6763 - accuracy: 0.4002 - val_loss: 1.7429 - val_accuracy: 0.3779
+Epoch 7/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6646 - accuracy: 0.4031
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6646 - accuracy: 0.4031 - val_loss: 1.7559 - val_accuracy: 0.3656
+Epoch 8/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.6513 - accuracy: 0.4082
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6513 - accuracy: 0.4082 - val_loss: 1.7291 - val_accuracy: 0.3644
+Epoch 9/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.6369 - accuracy: 0.4125
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6369 - accuracy: 0.4125 - val_loss: 1.6618 - val_accuracy: 0.4028
+Epoch 10/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.6335 - accuracy: 0.4160
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6335 - accuracy: 0.4160 - val_loss: 1.6510 - val_accuracy: 0.4052
+Epoch 11/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6177 - accuracy: 0.4197
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6177 - accuracy: 0.4197 - val_loss: 1.6812 - val_accuracy: 0.3936
+Epoch 12/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6150 - accuracy: 0.4204
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6150 - accuracy: 0.4204 - val_loss: 1.6500 - val_accuracy: 0.4131
+Epoch 13/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.6109 - accuracy: 0.4228
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.6109 - accuracy: 0.4228 - val_loss: 1.6807 - val_accuracy: 0.3968
+Epoch 14/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5976 - accuracy: 0.4272
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5976 - accuracy: 0.4272 - val_loss: 1.6640 - val_accuracy: 0.4061
+Epoch 15/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5915 - accuracy: 0.4305
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5915 - accuracy: 0.4305 - val_loss: 1.6592 - val_accuracy: 0.4064
+Epoch 16/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5905 - accuracy: 0.4293
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5905 - accuracy: 0.4293 - val_loss: 1.6484 - val_accuracy: 0.4021
+Epoch 17/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5828 - accuracy: 0.4335
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5828 - accuracy: 0.4335 - val_loss: 1.6463 - val_accuracy: 0.4135
+Epoch 18/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5785 - accuracy: 0.4331
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5785 - accuracy: 0.4331 - val_loss: 1.6582 - val_accuracy: 0.4019
+Epoch 19/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5746 - accuracy: 0.4362
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5746 - accuracy: 0.4362 - val_loss: 1.7262 - val_accuracy: 0.3845
+Epoch 20/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5758 - accuracy: 0.4340
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5758 - accuracy: 0.4340 - val_loss: 1.6638 - val_accuracy: 0.4083
+Epoch 21/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5659 - accuracy: 0.4380
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5659 - accuracy: 0.4380 - val_loss: 1.6524 - val_accuracy: 0.4107
+Epoch 22/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5634 - accuracy: 0.4387
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5634 - accuracy: 0.4387 - val_loss: 1.6575 - val_accuracy: 0.4073
+Epoch 23/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5533 - accuracy: 0.4432
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5533 - accuracy: 0.4432 - val_loss: 1.6182 - val_accuracy: 0.4283
+Epoch 24/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5500 - accuracy: 0.4432
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5500 - accuracy: 0.4432 - val_loss: 1.6160 - val_accuracy: 0.4265
+Epoch 25/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5517 - accuracy: 0.4416
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5517 - accuracy: 0.4416 - val_loss: 1.6424 - val_accuracy: 0.4124
+Epoch 26/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5438 - accuracy: 0.4460
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5438 - accuracy: 0.4460 - val_loss: 1.6142 - val_accuracy: 0.4287
+Epoch 27/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5414 - accuracy: 0.4474
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5414 - accuracy: 0.4474 - val_loss: 1.7002 - val_accuracy: 0.3995
+Epoch 28/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5436 - accuracy: 0.4443
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5436 - accuracy: 0.4443 - val_loss: 1.6571 - val_accuracy: 0.4188
+Epoch 29/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5326 - accuracy: 0.4534
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5326 - accuracy: 0.4534 - val_loss: 1.6115 - val_accuracy: 0.4225
+Epoch 30/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5342 - accuracy: 0.4507
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5342 - accuracy: 0.4507 - val_loss: 1.6456 - val_accuracy: 0.4167
+Epoch 31/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5285 - accuracy: 0.4527
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5285 - accuracy: 0.4527 - val_loss: 1.6105 - val_accuracy: 0.4275
+Epoch 32/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5310 - accuracy: 0.4523
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5310 - accuracy: 0.4523 - val_loss: 1.6299 - val_accuracy: 0.4245
+Epoch 33/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5304 - accuracy: 0.4505
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5304 - accuracy: 0.4505 - val_loss: 1.7005 - val_accuracy: 0.4043
+Epoch 34/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5280 - accuracy: 0.4529
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5280 - accuracy: 0.4529 - val_loss: 1.6476 - val_accuracy: 0.4139
+Epoch 35/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5229 - accuracy: 0.4576
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5229 - accuracy: 0.4576 - val_loss: 1.6683 - val_accuracy: 0.4120
+Epoch 36/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5249 - accuracy: 0.4530
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5249 - accuracy: 0.4530 - val_loss: 1.5866 - val_accuracy: 0.4341
+Epoch 37/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5174 - accuracy: 0.4570
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5174 - accuracy: 0.4570 - val_loss: 1.5890 - val_accuracy: 0.4324
+Epoch 38/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5135 - accuracy: 0.4590
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5135 - accuracy: 0.4590 - val_loss: 1.5864 - val_accuracy: 0.4375
+Epoch 39/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5070 - accuracy: 0.4602
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5070 - accuracy: 0.4602 - val_loss: 1.6542 - val_accuracy: 0.4185
+Epoch 40/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5075 - accuracy: 0.4587
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5075 - accuracy: 0.4587 - val_loss: 1.6082 - val_accuracy: 0.4301
+Epoch 41/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5089 - accuracy: 0.4616
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5089 - accuracy: 0.4616 - val_loss: 1.6359 - val_accuracy: 0.4171
+Epoch 42/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5054 - accuracy: 0.4594
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5054 - accuracy: 0.4594 - val_loss: 1.6206 - val_accuracy: 0.4265
+Epoch 43/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5043 - accuracy: 0.4611
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5043 - accuracy: 0.4611 - val_loss: 1.6135 - val_accuracy: 0.4259
+Epoch 44/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4980 - accuracy: 0.4620
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4980 - accuracy: 0.4620 - val_loss: 1.6310 - val_accuracy: 0.4108
+Epoch 45/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.5041 - accuracy: 0.4610
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.5041 - accuracy: 0.4610 - val_loss: 1.6086 - val_accuracy: 0.4271
+Epoch 46/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4999 - accuracy: 0.4632
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4999 - accuracy: 0.4632 - val_loss: 1.6317 - val_accuracy: 0.4247
+Epoch 47/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4930 - accuracy: 0.4659
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4930 - accuracy: 0.4659 - val_loss: 1.6180 - val_accuracy: 0.4283
+Epoch 48/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4982 - accuracy: 0.4635
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4982 - accuracy: 0.4635 - val_loss: 1.6140 - val_accuracy: 0.4224
+Epoch 49/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4933 - accuracy: 0.4656
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4933 - accuracy: 0.4656 - val_loss: 1.6634 - val_accuracy: 0.4048
+Epoch 50/50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+333/333 [==============================] - 1s 4ms/step - loss: 1.4983 - accuracy: 0.4612
+
+333/333 [==============================] - 2s 5ms/step - loss: 1.4983 - accuracy: 0.4612 - val_loss: 1.6241 - val_accuracy: 0.4196
+> model %>% evaluate(x_test, y_test)
+
+
+
+
+
+
+
+313/313 [==============================] - 0s 868us/step - loss: 1.6072 - accuracy: 0.4206
+
+313/313 [==============================] - 0s 871us/step - loss: 1.6072 - accuracy: 0.4206
+    loss accuracy 
+1.607201 0.420600 
+> model %>% predict(x_test) %>% k_argmin()
+
+
+ 
+
+
+
+313/313 [==============================] - 0s 776us/step
+
+313/313 [==============================] - 0s 776us/step
+tf.Tensor([7 6 6 ... 1 1 1], shape=(10000), dtype=int64)
+> model %>% evaluate(x_test, y_test)
+
+
+
+
+
+
+
+313/313 [==============================] - 0s 855us/step - loss: 1.6072 - accuracy: 0.4206
+
+313/313 [==============================] - 0s 858us/step - loss: 1.6072 - accuracy: 0.4206
+    loss accuracy 
+1.607201 0.420600 
+> virtualenv_create("myenv")
+Using Python: C:/Users/asiat/AppData/Local/r-miniconda/envs/r-reticulate/python.exe
+Creating virtual environment "myenv" ... 
++ "C:/Users/asiat/AppData/Local/r-miniconda/envs/r-reticulate/python.exe" -m venv "C:\Users\asiat\Documents/.virtualenvs/myenv"
+Done!
+Installing packages: "pip", "wheel", "setuptools", "numpy"
++ "C:\Users\asiat\Documents/.virtualenvs/myenv/Scripts/python.exe" -m pip install --upgrade --no-user "pip" "wheel" "setuptools" "numpy"
+Requirement already satisfied: pip in c:\users\asiat\documents\.virtualenvs\myenv\lib\site-packages (22.0.4)
+Collecting pip
+  Downloading pip-23.1.2-py3-none-any.whl (2.1 MB)
+     ---------------------------------------- 2.1/2.1 MB 8.2 MB/s eta 0:00:00
+Collecting wheel
+  Using cached wheel-0.40.0-py3-none-any.whl (64 kB)
+Requirement already satisfied: setuptools in c:\users\asiat\documents\.virtualenvs\myenv\lib\site-packages (56.0.0)
+Collecting setuptools
+  Using cached setuptools-67.7.2-py3-none-any.whl (1.1 MB)
+Collecting numpy
+  Using cached numpy-1.24.3-cp38-cp38-win_amd64.whl (14.9 MB)
+Installing collected packages: wheel, setuptools, pip, numpy
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 56.0.0
+    Uninstalling setuptools-56.0.0:
+      Successfully uninstalled setuptools-56.0.0
+  Attempting uninstall: pip
+    Found existing installation: pip 22.0.4
+    Uninstalling pip-22.0.4:
+      Successfully uninstalled pip-22.0.4
+Successfully installed numpy-1.24.3 pip-23.1.2 setuptools-67.7.2 wheel-0.40.0
+Virtual environment 'myenv' successfully created.
+> install_keras(method="virtualenv", envname="myenv")
+Błąd w poleceniu 'tensorflow::install_tensorflow(method = method, conda = conda, ':
+  You should call install_tensorflow()/install_keras() only in a fresh R session that has not yet initialized Keras and TensorFlow (this is to avoid DLL in use errors during installation)
+> model %>% evaluate(x_test, y_test)
+
+
+
+
+
+
+
+313/313 [==============================] - 0s 869us/step - loss: 1.6072 - accuracy: 0.4206
+
+313/313 [==============================] - 0s 872us/step - loss: 1.6072 - accuracy: 0.4206
+    loss accuracy 
+1.607201 0.420600 
+> plot(model)
+See ?keras::plot.keras.engine.training.Model for  instructions on how to install graphviz and pydot
+Błąd w poleceniu 'plot(model)':
+  ImportError: You must install pydot (`pip install pydot`) and install graphviz (see instructions at https://graphviz.gitlab.io/download/) for plot_model to work.
+> virtualenv_create("myenv")
+virtualenv: myenv
+> pip install pydot
+BŁĄD: nieoczekiwany symbol w "pip install"
+> plot(history)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad6\\zad6.RData")
+> plot(history)
+> plot(predict)
+Błąd w poleceniu 'UseMethod("predict")':
+  niestosowalna metoda dla 'predict' zastosowana do obiektu klasy "c('double', 'numeric')"
+> plot(history)
+> 
