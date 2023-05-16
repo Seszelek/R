@@ -1,0 +1,179 @@
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R jest oprogramowaniem darmowym i dostarczany jest BEZ JAKIEJKOLWIEK GWARANCJI.
+Możesz go rozpowszechniać pod pewnymi warunkami.
+Wpisz 'license()' lub 'licence()' aby uzyskać szczegóły dystrybucji.
+
+R jest projektem kolaboracyjnym z wieloma uczestnikami.
+Wpisz 'contributors()' aby uzyskać więcej informacji oraz
+'citation()' aby dowiedzieć się jak cytować R lub pakiety R w publikacjach.
+
+Wpisz 'demo()' aby zobaczyć demo, 'help()' aby uzyskać pomoc on-line, lub
+'help.start()' aby uzyskać pomoc w przeglądarce HTML.
+Wpisz 'q()' aby wyjść z R.
+
+[Poprzednio zapisany obszar roboczy został przywrócony]
+
+> library(randomForest)
+randomForest 4.7-1.1
+Type rfNews() to see new features/changes/bug fixes.
+Komunikat ostrzegawczy:
+pakiet ‘randomForest’ został zbudowany w wersji R 4.2.3 
+> library(e1071)
+Komunikat ostrzegawczy:
+pakiet ‘e1071’ został zbudowany w wersji R 4.2.3 
+> library(party)
+Ładowanie wymaganego pakietu: grid
+Ładowanie wymaganego pakietu: mvtnorm
+Ładowanie wymaganego pakietu: modeltools
+Ładowanie wymaganego pakietu: stats4
+Ładowanie wymaganego pakietu: strucchange
+Ładowanie wymaganego pakietu: zoo
+
+Dołączanie pakietu: ‘zoo’
+
+Następujące obiekty zostały zakryte z ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Ładowanie wymaganego pakietu: sandwich
+Komunikaty ostrzegawcze:
+1: pakiet ‘party’ został zbudowany w wersji R 4.2.3 
+2: pakiet ‘strucchange’ został zbudowany w wersji R 4.2.3 
+3: pakiet ‘zoo’ został zbudowany w wersji R 4.2.3 
+4: pakiet ‘sandwich’ został zbudowany w wersji R 4.2.3 
+> library(mlr)
+Ładowanie wymaganego pakietu: ParamHelpers
+Warning message: 'mlr' is in 'maintenance-only' mode since July 2019. Future development will only happen in 'mlr3'
+(<https://mlr3.mlr-org.com>). Due to the focus on 'mlr3' there might be uncaught bugs meanwhile in {mlr} - please
+consider switching.
+
+Dołączanie pakietu: ‘mlr’
+
+Następujący obiekt został zakryty z ‘package:e1071’:
+
+    impute
+
+Komunikaty ostrzegawcze:
+1: pakiet ‘mlr’ został zbudowany w wersji R 4.2.3 
+2: pakiet ‘ParamHelpers’ został zbudowany w wersji R 4.2.3 
+> library(rFerns)
+Komunikat ostrzegawczy:
+pakiet ‘rFerns’ został zbudowany w wersji R 4.2.3 
+> s=read.csv("C:/Users/asiat/Documents/R/Zad5/2/smartfony.csv")
+> s <- s [1:8]
+> s$nazwa = factor(s$nazwa)
+> s$ocena_klientow = factor(s$ocena_klientow)
+> summarizeColumns(s)
+              name    type na        mean        disp median        mad   min  max nlevs
+1            nazwa  factor  0          NA   0.7333333     NA         NA   1.0    4    10
+2      wyswietlacz numeric  0    6.413333   0.2748160    6.4    0.14826   5.8    7     0
+3       pamiec_ram integer  0    6.533333   1.4074631    6.0    2.96520   4.0    8     0
+4 pamiec_wbudowana integer  0  158.400000  89.0944924  128.0   94.88640   8.0  256     0
+5      aparat_foto integer  0   31.200000  16.0854859   32.0   23.72160   8.0   64     0
+6             cena integer  0 2265.666667 945.4150008 2399.0 1037.82000 599.0 3999     0
+7    liczba_opinii integer  0  237.733333 240.5088257  201.0  250.55940   2.0  678     0
+8   ocena_klientow  factor  0          NA   0.6666667     NA         NA   1.0    5     5
+> rdesc = makeResampleDesc("CV", iters = 10)
+> task = makeClassifTask(id = deparse(substitute(s)), s, "ocena_klientow",
++                        weights = NULL, blocking = NULL, coordinates = NULL,
++                        positive = NA_character_, fixup.data = "warn", check.data = TRUE)
+> lrns <- makeLearners(c("rpart", "C50", "ctree", "naiveBayes", "randomForest"), type = "classif")
+> bmr <- benchmark(learners = lrns, tasks = task, rdesc, models = TRUE, measures = list(acc, ber))
+Task: s, Learner: classif.rpart
+Resampling: cross-validation
+Measures:             acc       ber       
+[Resample] iter 1:    0.5000000      NaN  
+[Resample] iter 2:    0.5000000      NaN  
+[Resample] iter 3:    0.0000000      NaN  
+[Resample] iter 4:    0.0000000      NaN  
+[Resample] iter 5:    0.0000000      NaN  
+[Resample] iter 6:    0.5000000      NaN  
+[Resample] iter 7:    1.0000000      NaN  
+[Resample] iter 8:    0.0000000      NaN  
+[Resample] iter 9:    0.5000000      NaN  
+[Resample] iter 10:   0.0000000      NaN  
+
+
+Aggregated Result: acc.test.mean=0.3000000,ber.test.mean=     NaN
+
+
+Task: s, Learner: classif.C50
+Resampling: cross-validation
+Measures:             acc       ber       
+[Resample] iter 1:    0.5000000      NaN  
+[Resample] iter 2:    0.0000000      NaN  
+[Resample] iter 3:    0.0000000      NaN  
+[Resample] iter 4:    0.0000000      NaN  
+[Resample] iter 5:    0.0000000      NaN  
+[Resample] iter 6:    0.0000000      NaN  
+[Resample] iter 7:    1.0000000      NaN  
+[Resample] iter 8:    0.0000000      NaN  
+[Resample] iter 9:    0.5000000      NaN  
+[Resample] iter 10:   0.0000000      NaN  
+
+
+Aggregated Result: acc.test.mean=0.2000000,ber.test.mean=     NaN
+
+
+Task: s, Learner: classif.ctree
+Resampling: cross-validation
+Measures:             acc       ber       
+[Resample] iter 1:    0.5000000      NaN  
+[Resample] iter 2:    0.5000000      NaN  
+[Resample] iter 3:    0.0000000      NaN  
+[Resample] iter 4:    0.0000000      NaN  
+[Resample] iter 5:    0.0000000      NaN  
+[Resample] iter 6:    0.5000000      NaN  
+[Resample] iter 7:    1.0000000      NaN  
+[Resample] iter 8:    0.0000000      NaN  
+[Resample] iter 9:    0.5000000      NaN  
+[Resample] iter 10:   0.0000000      NaN  
+
+
+Aggregated Result: acc.test.mean=0.3000000,ber.test.mean=     NaN
+
+
+Task: s, Learner: classif.naiveBayes
+Resampling: cross-validation
+Measures:             acc       ber       
+[Resample] iter 1:    0.5000000      NaN  
+[Resample] iter 2:    0.0000000      NaN  
+[Resample] iter 3:    1.0000000      NaN  
+[Resample] iter 4:    0.0000000      NaN  
+[Resample] iter 5:    1.0000000      NaN  
+[Resample] iter 6:    0.5000000      NaN  
+[Resample] iter 7:    1.0000000      NaN  
+[Resample] iter 8:    0.0000000      NaN  
+[Resample] iter 9:    0.0000000      NaN  
+[Resample] iter 10:   0.0000000      NaN  
+
+
+Aggregated Result: acc.test.mean=0.4000000,ber.test.mean=     NaN
+
+
+Task: s, Learner: classif.randomForest
+Resampling: cross-validation
+Measures:             acc       ber       
+[Resample] iter 1:    0.0000000      NaN  
+[Resample] iter 2:    0.0000000      NaN  
+[Resample] iter 3:    1.0000000      NaN  
+[Resample] iter 4:    0.0000000      NaN  
+[Resample] iter 5:    1.0000000      NaN  
+[Resample] iter 6:    0.0000000      NaN  
+[Resample] iter 7:    1.0000000      NaN  
+[Resample] iter 8:    0.0000000      NaN  
+[Resample] iter 9:    0.0000000      NaN  
+[Resample] iter 10:   0.0000000      NaN  
+
+
+Aggregated Result: acc.test.mean=0.3000000,ber.test.mean=     NaN
+
+
+> p = getBMRPredictions(bmr)
+> plotBMRSummary(bmr)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad5\\2\\zad5_2.RData")
+> plotBMRSummary(bmr)

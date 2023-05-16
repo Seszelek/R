@@ -1,0 +1,21 @@
+
+library("MASS")
+library("dplyr")
+library("party")
+library("mlr")
+library("MASS")
+library("C50")
+library("rpart")
+
+train <- force(iris)
+summarizeColumns(train)
+data <- c("training", "test")
+splitData <-  split(train, data)
+tree <- rpart(Species ~ ., splitData$training)
+table(iris$type)
+table of extent 0 >
+tree <- C5.0(train[1:300, -5], train[1:300, 5])
+summary(tree)
+plot(tree)
+
+

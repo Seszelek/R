@@ -1,0 +1,27 @@
+#install.packages("rFerns")
+#install.packages("randomForest")
+#install.packages("e1071")
+#install.packages("party")
+
+library(randomForest)
+library(e1071)
+library(party)
+library(mlr)
+library(rFerns)
+
+s=read.csv("C:/Users/asiat/Documents/R/Zad5/2/smartfony.csv")
+s <- s [1:8]
+s$nazwa = factor(s$nazwa)
+s$ocena_klientow = factor(s$ocena_klientow)
+summarizeColumns(s)
+rdesc = makeResampleDesc("CV", iters = 10)
+
+task = makeClassifTask(id = deparse(substitute(s)), s, "ocena_klientow",
+                       weights = NULL, blocking = NULL, coordinates = NULL,
+                       positive = NA_character_, fixup.data = "warn", check.data = TRUE)
+lrns <- makeLearners(c("rpart", "C50", "ctree", "naiveBayes", "randomForest"), type = "classif")
+
+
+bmr <- benchmark(learners = lrns, tasks = task, rdesc, models = TRUE, measures = list(acc, ber))
+p = getBMRPredictions(bmr)
+plotBMRSummary(bmr)

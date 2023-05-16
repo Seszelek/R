@@ -1,0 +1,145 @@
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R jest oprogramowaniem darmowym i dostarczany jest BEZ JAKIEJKOLWIEK GWARANCJI.
+Możesz go rozpowszechniać pod pewnymi warunkami.
+Wpisz 'license()' lub 'licence()' aby uzyskać szczegóły dystrybucji.
+
+R jest projektem kolaboracyjnym z wieloma uczestnikami.
+Wpisz 'contributors()' aby uzyskać więcej informacji oraz
+'citation()' aby dowiedzieć się jak cytować R lub pakiety R w publikacjach.
+
+Wpisz 'demo()' aby zobaczyć demo, 'help()' aby uzyskać pomoc on-line, lub
+'help.start()' aby uzyskać pomoc w przeglądarce HTML.
+Wpisz 'q()' aby wyjść z R.
+
+[Poprzednio zapisany obszar roboczy został przywrócony]
+
+> library("MASS")
+> library("dplyr")
+
+Dołączanie pakietu: ‘dplyr’
+
+Następujący obiekt został zakryty z ‘package:MASS’:
+
+    select
+
+Następujące obiekty zostały zakryte z ‘package:stats’:
+
+    filter, lag
+
+Następujące obiekty zostały zakryte z ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Komunikat ostrzegawczy:
+pakiet ‘dplyr’ został zbudowany w wersji R 4.2.3 
+> library("party")
+Ładowanie wymaganego pakietu: grid
+Ładowanie wymaganego pakietu: mvtnorm
+Ładowanie wymaganego pakietu: modeltools
+Ładowanie wymaganego pakietu: stats4
+Ładowanie wymaganego pakietu: strucchange
+Ładowanie wymaganego pakietu: zoo
+
+Dołączanie pakietu: ‘zoo’
+
+Następujące obiekty zostały zakryte z ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Ładowanie wymaganego pakietu: sandwich
+
+Dołączanie pakietu: ‘party’
+
+Następujący obiekt został zakryty z ‘package:dplyr’:
+
+    where
+
+Komunikaty ostrzegawcze:
+1: pakiet ‘party’ został zbudowany w wersji R 4.2.3 
+2: pakiet ‘strucchange’ został zbudowany w wersji R 4.2.3 
+3: pakiet ‘zoo’ został zbudowany w wersji R 4.2.3 
+4: pakiet ‘sandwich’ został zbudowany w wersji R 4.2.3 
+> library("mlr")
+Ładowanie wymaganego pakietu: ParamHelpers
+Warning message: 'mlr' is in 'maintenance-only' mode since July 2019.
+Future development will only happen in 'mlr3'
+(<https://mlr3.mlr-org.com>). Due to the focus on 'mlr3' there might be
+uncaught bugs meanwhile in {mlr} - please consider switching.
+Komunikaty ostrzegawcze:
+1: pakiet ‘mlr’ został zbudowany w wersji R 4.2.3 
+2: pakiet ‘ParamHelpers’ został zbudowany w wersji R 4.2.3 
+> library("MASS")
+> library("C50")
+Komunikat ostrzegawczy:
+pakiet ‘C50’ został zbudowany w wersji R 4.2.3 
+> library("rpart")
+> 
+> train <- force(iris)
+> summarizeColumns(train)
+          name    type na     mean      disp median     mad  min  max nlevs
+1 Sepal.Length numeric  0 5.843333 0.8280661   5.80 1.03782  4.3  7.9     0
+2  Sepal.Width numeric  0 3.057333 0.4358663   3.00 0.44478  2.0  4.4     0
+3 Petal.Length numeric  0 3.758000 1.7652982   4.35 1.85325  1.0  6.9     0
+4  Petal.Width numeric  0 1.199333 0.7622377   1.30 1.03782  0.1  2.5     0
+5      Species  factor  0       NA 0.6666667     NA      NA 50.0 50.0     3
+> data <- c("training", "test")
+> splitData <-  split(train, data)
+> tree <- rpart(Species ~ ., splitData$training)
+> table(iris$type)
+< table of extent 0 >
+> tree <- C5.0(train[1:300, -5], train[1:300, 5])
+> summary(tree)
+
+Call:
+C5.0.default(x = train[1:300, -5], y = train[1:300, 5])
+
+
+C5.0 [Release 2.07 GPL Edition]         Tue May 16 15:26:31 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+*** ignoring cases with bad or unknown class
+
+Read 150 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+Petal.Length <= 1.9: setosa (50)
+Petal.Length > 1.9:
+:...Petal.Width > 1.7: virginica (46/1)
+    Petal.Width <= 1.7:
+    :...Petal.Length <= 4.9: versicolor (48/1)
+        Petal.Length > 4.9: virginica (6/2)
+
+
+Evaluation on training data (150 cases):
+
+            Decision Tree   
+          ----------------  
+          Size      Errors  
+
+             4    4( 2.7%)   <<
+
+
+           (a)   (b)   (c)    <-classified as
+          ----  ----  ----
+            50                (a): class setosa
+                  47     3    (b): class versicolor
+                   1    49    (c): class virginica
+
+
+        Attribute usage:
+
+        100.00% Petal.Length
+         66.67% Petal.Width
+
+
+Time: 0.0 secs
+
+> plot(tree)
+> save.image("C:\\Users\\asiat\\Documents\\R\\Zad5\\zad5.RData")
+> 
